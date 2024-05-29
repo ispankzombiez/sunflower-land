@@ -107,7 +107,8 @@ type InteractableName =
   | "kingdom_book_3"
   | "kingdom_book_4"
   | "kingdom_book_5"
-  | "kingdom_knight";
+  | "kingdom_knight"
+  | "poker_house_modal";
 
 class InteractableModalManager {
   private listener?: (name: InteractableName, isOpen: boolean) => void;
@@ -173,6 +174,15 @@ export const InteractableModals: React.FC<Props> = ({ id, scene }) => {
           id={id}
         />
       </Modal>
+
+      <Modal show={interactable === "poker_house_modal"} onHide={closeModal}>
+        <BoatModal
+          isOpen={interactable === "poker_house_modal"}
+          closeModal={closeModal}
+          id={id}
+        />
+      </Modal>
+
       <Modal show={interactable === "fat_chicken"} onHide={closeModal}>
         <SpeakingModal
           onClose={closeModal}
