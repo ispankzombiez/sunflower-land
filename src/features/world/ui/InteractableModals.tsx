@@ -32,7 +32,7 @@ import { ChickenRescue } from "./portals/ChickenRescue";
 import { InlineDialogue } from "./TypingMessage";
 import { Label } from "components/ui/Label";
 import { FestivalOfColors } from "./portals/FestivalOfColors";
-import { PokerHouseModal } from "./PokerHouseModal"
+import { PokerHouseModal } from "./PokerHouseModal";
 
 export type FanArtNPC = "fan_npc_1" | "fan_npc_2" | "fan_npc_3" | "fan_npc_4";
 
@@ -177,7 +177,7 @@ export const InteractableModals: React.FC<Props> = ({ id, scene }) => {
       </Modal>
 
       <Modal show={interactable === "poker_house_modal"} onHide={closeModal}>
-        <PokerHouseModal closeModal = {closeModal}/>
+        <PokerHouseModal closeModal={closeModal} />
       </Modal>
 
       <Modal show={interactable === "fat_chicken"} onHide={closeModal}>
