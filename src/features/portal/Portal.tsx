@@ -19,7 +19,7 @@ export const PortalApp: React.FC = () => {
   if (CONFIG.PORTAL_APP === "poker-house") {
     return <PokerHouseApp />;
   }
-  
+
   if (CONFIG.PORTAL_APP === "crop-boom") {
     return <CropBoomApp />;
   }

@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "components/ui/Button";
 import { useAppTranslation } from "lib/i18n/useAppTranslations";

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { OFFLINE_FARM } from "features/game/lib/landData";
 import { GameState } from "features/game/types/game";
 import { assign, createMachine, Interpreter, State } from "xstate";
@@ -145,7 +146,9 @@ export const portalMachine = createMachine({
           },
         ],
         onError: {
-          actions: (context,event) => {console.error(event.data);},
+          actions: (context, event) => {
+            console.error(event.data);
+          },
           target: "error",
         },
       },
