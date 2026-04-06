@@ -6,6 +6,11 @@ export const nightshadeArcadeEvents = {
   onChestClicked: null as (() => void) | null,
   onMinigameRequested: null as ((gameType: string) => void) | null,
   onOpenShop: null as (() => void) | null,
+  isMinigameActive: false,
+
+  setMinigameActive(active: boolean) {
+    this.isMinigameActive = active;
+  },
 
   registerChestClickHandler(callback: (() => void) | null) {
     this.onChestClicked = callback;

@@ -53,6 +53,7 @@ export const NightshadeArcade: React.FC = () => {
 
   // Handler for minigame requests
   const handleMinigameRequested = useCallback((gameType: string) => {
+    nightshadeArcadeEvents.setMinigameActive(true);
     setActiveMinigame(gameType as MinigameName);
     setShowMinigameModal(true);
   }, []);
@@ -91,62 +92,46 @@ export const NightshadeArcade: React.FC = () => {
 
   // Subscribe to minigames events
   useEffect(() => {
-    const unsubscribePoker = minigamesEventEmitter.subscribe("poker", () => {
-      setActiveMinigame("poker");
+    const openMinigame = (name: MinigameName) => {
+      nightshadeArcadeEvents.setMinigameActive(true);
+      setActiveMinigame(name);
       setShowMinigameModal(true);
-    });
+    };
 
+    const unsubscribePoker = minigamesEventEmitter.subscribe("poker", () =>
+      openMinigame("poker"),
+    );
     const unsubscribeBlackjack = minigamesEventEmitter.subscribe(
       "blackjack",
-      () => {
-        setActiveMinigame("blackjack");
-        setShowMinigameModal(true);
-      },
+      () => openMinigame("blackjack"),
     );
-
-    const unsubscribeGoFish = minigamesEventEmitter.subscribe("gofish", () => {
-      setActiveMinigame("gofish");
-      setShowMinigameModal(true);
-    });
-
-    const unsubscribeUno = minigamesEventEmitter.subscribe("uno", () => {
-      setActiveMinigame("uno");
-      setShowMinigameModal(true);
-    });
-
+    const unsubscribeGoFish = minigamesEventEmitter.subscribe("gofish", () =>
+      openMinigame("gofish"),
+    );
+    const unsubscribeUno = minigamesEventEmitter.subscribe("uno", () =>
+      openMinigame("uno"),
+    );
     const unsubscribeSolitaire = minigamesEventEmitter.subscribe(
       "solitaire",
-      () => {
-        setActiveMinigame("solitaire");
-        setShowMinigameModal(true);
-      },
+      () => openMinigame("solitaire"),
     );
-
     const unsubscribeGoblinInvaders = minigamesEventEmitter.subscribe(
       "goblin-invaders",
-      () => {
-        setActiveMinigame("goblin-invaders");
-        setShowMinigameModal(true);
-      },
+      () => openMinigame("goblin-invaders"),
     );
-
-    const unsubscribeTetris = minigamesEventEmitter.subscribe("tetris", () => {
-      setActiveMinigame("tetris");
-      setShowMinigameModal(true);
-    });
-
+    const unsubscribeTetris = minigamesEventEmitter.subscribe("tetris", () =>
+      openMinigame("tetris"),
+    );
     const unsubscribeBarleyBreaker = minigamesEventEmitter.subscribe(
       "barley-breaker",
-      () => {
-        setActiveMinigame("barley-breaker");
-        setShowMinigameModal(true);
-      },
+      () => openMinigame("barley-breaker"),
     );
-
-    const unsubscribePacMan = minigamesEventEmitter.subscribe("pac-man", () => {
-      setActiveMinigame("pac-man");
-      setShowMinigameModal(true);
-    });
+    const unsubscribePacMan = minigamesEventEmitter.subscribe("pac-man", () =>
+      openMinigame("pac-man"),
+    );
+    const unsubscribeFrogger = minigamesEventEmitter.subscribe("frogger", () =>
+      openMinigame("frogger"),
+    );
 
     return () => {
       unsubscribePoker();
@@ -158,6 +143,7 @@ export const NightshadeArcade: React.FC = () => {
       unsubscribeTetris();
       unsubscribeBarleyBreaker();
       unsubscribePacMan();
+      unsubscribeFrogger();
     };
   }, []);
 
@@ -270,13 +256,19 @@ export const NightshadeArcade: React.FC = () => {
           {activeMinigame && (
             <Modal
               show={showMinigameModal}
-              onHide={() => setShowMinigameModal(false)}
+              onHide={() => {
+                nightshadeArcadeEvents.setMinigameActive(false);
+                setShowMinigameModal(false);
+              }}
               fullscreen
               dialogClassName="flex items-center justify-center"
             >
               <NightshadeArcadeMinigame
                 gameName={activeMinigame}
-                onClose={() => setShowMinigameModal(false)}
+                onClose={() => {
+                  nightshadeArcadeEvents.setMinigameActive(false);
+                  setShowMinigameModal(false);
+                }}
               />
             </Modal>
           )}

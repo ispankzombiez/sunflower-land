@@ -14,7 +14,8 @@ type MinigameType =
   | "solitaire"
   | "goblin-invaders"
   | "tetris"
-  | "pac-man";
+  | "pac-man"
+  | "frogger";
 
 interface MinigameEvent {
   type: MinigameType;

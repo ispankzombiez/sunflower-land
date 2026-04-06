@@ -127,6 +127,10 @@ export class NightshadeArcadeScene extends BaseScene {
                 if (machineName === "machine 9") {
                   minigamesEventEmitter.emit({ type: "barley-breaker" });
                 }
+
+                if (machineName === "machine 10") {
+                  minigamesEventEmitter.emit({ type: "frogger" });
+                }
               }
             });
         }
@@ -224,5 +228,10 @@ export class NightshadeArcadeScene extends BaseScene {
         }
       });
     }
+  }
+  updatePlayer(): void {
+    if (nightshadeArcadeEvents.isMinigameActive) return;
+
+    super.updatePlayer();
   }
 }

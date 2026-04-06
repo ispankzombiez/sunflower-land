@@ -13,6 +13,7 @@ export const NIGHTSHADE_ARCADE_MINIGAMES: MinigameName[] = [
   "goblin-invaders" as MinigameName,
   "tetris" as MinigameName,
   "pac-man" as MinigameName,
+  "frogger" as MinigameName,
 ];
 
 export const POKER_STARTING_CHIPS = 100;
