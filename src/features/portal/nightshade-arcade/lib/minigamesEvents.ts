@@ -7,6 +7,7 @@ type MinigameType =
   | "poker"
   | "slots"
   | "barley-breaker"
+  | "bullet-hell"
   | "roulette"
   | "blackjack"
   | "gofish"

@@ -132,6 +132,10 @@ export const NightshadeArcade: React.FC = () => {
     const unsubscribeFrogger = minigamesEventEmitter.subscribe("frogger", () =>
       openMinigame("frogger"),
     );
+    const unsubscribeBulletHell = minigamesEventEmitter.subscribe(
+      "bullet-hell",
+      () => openMinigame("bullet-hell"),
+    );
 
     return () => {
       unsubscribePoker();
@@ -144,6 +148,7 @@ export const NightshadeArcade: React.FC = () => {
       unsubscribeBarleyBreaker();
       unsubscribePacMan();
       unsubscribeFrogger();
+      unsubscribeBulletHell();
     };
   }, []);
 

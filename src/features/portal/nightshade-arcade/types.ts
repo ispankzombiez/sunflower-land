@@ -10,6 +10,7 @@ export type MinigameName =
   | "poker"
   | "slots"
   | "barley-breaker"
+  | "bullet-hell"
   | "blackjack"
   | "roulette"
   | "gofish"

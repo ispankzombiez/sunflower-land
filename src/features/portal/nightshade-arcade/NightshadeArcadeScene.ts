@@ -131,6 +131,10 @@ export class NightshadeArcadeScene extends BaseScene {
                 if (machineName === "machine 10") {
                   minigamesEventEmitter.emit({ type: "frogger" });
                 }
+
+                if (machineName === "machine 11") {
+                  minigamesEventEmitter.emit({ type: "bullet-hell" });
+                }
               }
             });
         }
