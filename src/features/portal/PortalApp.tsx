@@ -37,7 +37,7 @@ const PortalBackground: React.FC<{ children: React.ReactNode }> = ({ children })
 
 export const PortalApp: React.FC = () => {
   // Determine which portal to render based on CONFIG.PORTAL_APP
-  const portal = CONFIG.PORTAL_APP === "nightshade-arcade" ? <NightshadeArcade /> : <PortalExample />;
+  // const portal = CONFIG.PORTAL_APP === "nightshade-arcade" ? <NightshadeArcade /> : <PortalExample />;
   const PortalProviderComponent = CONFIG.PORTAL_APP === "nightshade-arcade" ? NightshadeArcadePortalProvider : PortalProvider;
   
   // PortalProvider - gives you access to a xstate machine which handles state management
@@ -45,7 +45,7 @@ export const PortalApp: React.FC = () => {
     <WalletProvider>
       <PortalProviderComponent>
         <PortalBackground>
-          {portal}
+          <NightshadeArcade/>
         </PortalBackground>
       </PortalProviderComponent>
     </WalletProvider>
