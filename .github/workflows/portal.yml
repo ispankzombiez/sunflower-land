@@ -58,12 +58,4 @@ jobs:
           aws s3 cp ./dist/sw.js s3://sfl-minigames/nightshade-arcade.minigames.sunflower-land.com/sw.js --cache-control "no-cache, no-store, must-revalidate" --content-type "application/javascript"
           aws s3 cp ./dist/manifest.webmanifest s3://sfl-minigames/nightshade-arcade.minigames.sunflower-land.com/manifest.webmanifest --cache-control "no-cache, no-store, must-revalidate" --content-type "application/manifest+json"
 
-      - name: Invalidate CloudFront (if distribution is configured)
-        if: ${{ secrets.PORTAL_CF_DISTRIBUTION != '' }}
-        uses: chetan/invalidate-cloudfront-action@v2
-        env:
-          DISTRIBUTION: ${{ secrets.PORTAL_CF_DISTRIBUTION }}
-          PATHS: "/*"
-          AWS_REGION: "ap-southeast-2"
-          AWS_ACCESS_KEY_ID: ${{ secrets.PORTAL_DEPLOY_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.PORTAL_DEPLOY_SECRET }}
+
