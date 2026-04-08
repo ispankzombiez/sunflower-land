@@ -299,7 +299,9 @@ export const NPCModals: React.FC<Props> = ({ id }) => {
         )}
         {npc === "eldric" && <FactionShop onClose={closeModal} />}
         {npc === "pet" && <FactionPetPanel onClose={closeModal} />}
-        {npc === "prizedesk" && <NightshadeArcadeShop onClose={closeModal} />}
+        {(npc as string) === "prizedesk" && (
+          <NightshadeArcadeShop onClose={closeModal} />
+        )}
       </Modal>
 
       {npc === "hammerin harry" && (

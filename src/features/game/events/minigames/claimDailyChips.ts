@@ -2,39 +2,40 @@ import { Decimal } from "decimal.js-light";
 import { GameState } from "features/game/types/game";
 import { produce } from "immer";
 
-export type ClaimDailyChipsAction = {
-  type: "dailyChips.claimed";
+export type ClaimDailyRavenCoinsAction = {
+  type: "dailyRavenCoins.claimed";
   reward: number;
 };
 
 type Options = {
   state: Readonly<GameState>;
-  action: ClaimDailyChipsAction;
+  action: ClaimDailyRavenCoinsAction;
   createdAt?: number;
 };
 
-export function claimDailyChips({
+export function claimDailyRavenCoins({
   state,
-  _action,
-  _createdAt = Date.now(),
+  action,
+  createdAt = Date.now(),
 }: Options): GameState {
+  void createdAt;
+
   return produce(state, (draft) => {
     const dateKey = new Date().toISOString().slice(0, 10);
-    const lastClaimDate = draft.dailyChipsLastClaimDate ?? null;
+    const lastClaimDate = draft.dailyRavenCoinsLastClaimDate ?? null;
 
     // Check if player is eligible
     const isEligible = lastClaimDate === null || lastClaimDate !== dateKey;
 
     if (isEligible) {
-      const currentChips = new Decimal(draft.inventory.Chip ?? 0);
-      const dailyMaxChips = new Decimal(10);
-      const reward = dailyMaxChips.minus(currentChips);
+      const currentRavenCoins = new Decimal(draft.inventory.RavenCoin ?? 0);
+      const reward = new Decimal(action.reward ?? 0);
 
-      // Only award if below max
       if (reward.gt(0)) {
-        draft.inventory.Chip = currentChips.plus(reward);
-        draft.dailyChipsLastClaimDate = dateKey;
+        draft.inventory.RavenCoin = currentRavenCoins.plus(reward);
       }
+
+      draft.dailyRavenCoinsLastClaimDate = dateKey;
     }
   });
 }

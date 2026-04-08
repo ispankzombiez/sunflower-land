@@ -20,7 +20,19 @@ export type MinigameName =
   | "april-fools"
   | "memory"
   | "chaacs-temple"
-  | "nightshade-arcade";
+  | "nightshade-arcade"
+  | "poker"
+  | "slots"
+  | "barley-breaker"
+  | "blackjack"
+  | "roulette"
+  | "gofish"
+  | "uno"
+  | "solitaire"
+  | "goblin-invaders"
+  | "tetris"
+  | "pac-man"
+  | "frogger";
 
 export const SUPPORTED_MINIGAMES: MinigameName[] = [
   "crop-boom",
@@ -45,4 +57,16 @@ export const SUPPORTED_MINIGAMES: MinigameName[] = [
   "memory",
   "chaacs-temple",
   "nightshade-arcade",
+  "poker",
+  "slots",
+  "barley-breaker",
+  "blackjack",
+  "roulette",
+  "gofish",
+  "uno",
+  "solitaire",
+  "goblin-invaders",
+  "tetris",
+  "pac-man",
+  "frogger",
 ];

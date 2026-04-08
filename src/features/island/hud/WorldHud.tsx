@@ -168,7 +168,11 @@ const HudComponent: React.FC<Props> = ({
             sfl={state.balance}
             coins={state.coins}
             gems={state.inventory["Gem"] ?? new Decimal(0)}
-            chips={pathname.includes("nightshade-arcade") ? state.inventory["Chip"] ?? new Decimal(0) : undefined}
+            ravenCoins={
+              pathname.includes("nightshade-arcade")
+                ? state.inventory["RavenCoin"] ?? new Decimal(0)
+                : undefined
+            }
           />
         </div>
 

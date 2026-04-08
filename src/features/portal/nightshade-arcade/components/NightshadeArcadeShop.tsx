@@ -21,7 +21,7 @@ const _state = (state: PortalMachineState) => state.context.state;
 
 interface NightshadeArcadeShopProps {
   onClose: () => void;
-  portalService: MachineInterpreter;
+  portalService?: MachineInterpreter;
 }
 
 type Tier = "basic" | "rare" | "epic" | "mega";
@@ -43,6 +43,17 @@ export const NightshadeArcadeShop: React.FC<NightshadeArcadeShopProps> = ({
   const { t } = useAppTranslation();
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  if (!portalService) {
+    return (
+      <OuterPanel>
+        <InnerPanel className="p-2">
+          <Label type="danger">Coming Soon</Label>
+        </InnerPanel>
+      </OuterPanel>
+    );
+  }
+
   const state = useSelector(portalService, _state);
 
   const ravenCoinBalance =

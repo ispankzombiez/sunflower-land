@@ -16,13 +16,15 @@ type Options = {
 export function pokerBetPlaced({
   state,
   action,
-  _createdAt = Date.now(),
+  createdAt = Date.now(),
 }: Options): GameState {
+  void createdAt;
+
   return produce(state, (draft) => {
-    const currentChips = new Decimal(draft.inventory.Chip ?? 0);
+    const currentRavenCoins = new Decimal(draft.inventory.RavenCoin ?? 0);
     const betAmount = new Decimal(action.amount);
 
     // Deduct the bet amount from inventory
-    draft.inventory.Chip = currentChips.minus(betAmount);
+    draft.inventory.RavenCoin = currentRavenCoins.minus(betAmount);
   });
 }

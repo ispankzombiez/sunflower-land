@@ -103,8 +103,8 @@ export const PortalBasket: React.FC<Props> = ({
 
   // Arcade items - only items that are in the ARCADE_ITEMS catalog AND have count > 0
   const arcadeItems = getKeys(inventory)
-    .filter((item) => arcadeItemSet.has(item as any))
-    .filter((item) => hasPositiveAmount(inventory[item as any]))
+    .filter((item) => arcadeItemSet.has(item))
+    .filter((item) => hasPositiveAmount(inventory[item as InventoryItemName]))
     .sort() as string[];
 
   // Game inventory - create a virtual game state to use with game basket logic

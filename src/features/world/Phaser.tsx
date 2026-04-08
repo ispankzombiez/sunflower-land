@@ -33,6 +33,7 @@ import { EquipBumpkinAction } from "features/game/events/landExpansion/equip";
 import { Label } from "components/ui/Label";
 import { CommunityModals } from "./ui/CommunityModalManager";
 import { CommunityToasts } from "./ui/CommunityToastManager";
+import { WorldHud } from "features/island/hud/WorldHud";
 import { useNavigate } from "react-router";
 import { prepareAPI } from "features/community/lib/CommunitySDK";
 import { BumpkinParts } from "lib/utils/tokenUriBuilder";

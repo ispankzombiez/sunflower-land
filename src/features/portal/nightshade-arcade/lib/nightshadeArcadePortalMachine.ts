@@ -8,6 +8,7 @@ import { PortalGameState } from "../types";
 import { OFFLINE_FARM } from "features/game/lib/landData";
 import { MinigameName } from "../types";
 import { Minigame } from "features/game/types/game";
+import { InventoryItemName } from "features/game/types/game";
 import { MAX_PAID_REWARD_ATTEMPTS_PER_DAY } from "../mini-games/poker/session";
 
 type ArcadeTier = "basic" | "rare" | "epic" | "mega";
@@ -33,7 +34,7 @@ export interface Context {
 export type PortalEvent =
   | { type: "RETRY" }
   | { type: "dailyRavenCoins.claimed"; reward: number }
-  | { type: "chapterItem.bought"; name: string; tier: ArcadeTier }
+  | { type: "chapterItem.bought"; name: InventoryItemName; tier: ArcadeTier }
   | { type: "arcadeMinigame.started"; name: MinigameName }
   | {
       type: "arcadeMinigame.attemptPurchased";
@@ -62,7 +63,7 @@ export const nightshadeArcadePortalMachine = createMachine({
   context: {
     id: 0,
     jwt: getJwt(),
-    state: CONFIG.API_URL ? undefined : OFFLINE_FARM,
+    state: OFFLINE_FARM,
   },
   states: {
     initialising: {
@@ -150,7 +151,7 @@ export const nightshadeArcadePortalMachine = createMachine({
             assign({
               state: (context, event: any) => {
                 const { name, tier } = event as {
-                  name: string;
+                  name: InventoryItemName;
                   tier: ArcadeTier;
                 };
 

@@ -65,7 +65,7 @@ export const MAX_INVENTORY_ITEMS: Inventory = {
   "Rapid Growth": new Decimal(100),
   "Red Envelope": new Decimal(100),
   "Love Letter": new Decimal(400),
-  "Chip": new Decimal(10000),
+  RavenCoin: new Decimal(10000),
 
   //Treasure Island Decorations
   "Abandoned Bear": new Decimal(50),

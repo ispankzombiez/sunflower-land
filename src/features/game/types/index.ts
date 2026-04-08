@@ -1479,6 +1479,8 @@ export const KNOWN_IDS: Record<InventoryItemName, number> = {
   "Capsule Bait": 2986,
   "Umbrella Bait": 2987,
   "Crimson Baitfish": 2988,
+  "Nightshade Ticket": 2989,
+  RavenCoin: 2990,
 };
 
 // The reverse of above

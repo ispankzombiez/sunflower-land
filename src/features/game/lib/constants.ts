@@ -385,7 +385,7 @@ export const INITIAL_FARM: GameState = {
     Rug: new Decimal(1),
     Wardrobe: new Decimal(1),
     Shovel: new Decimal(1),
-    Chip: new Decimal(0),
+    RavenCoin: new Decimal(0),
   },
   previousInventory: {},
   wardrobe: {},
@@ -908,7 +908,7 @@ export const TEST_FARM: GameState = {
   bumpkin: INITIAL_BUMPKIN,
 
   dailyRewards: { streaks: 0 },
-  dailyChipsLastClaimDate: undefined,
+  dailyRavenCoinsLastClaimDate: undefined,
 
   fruitPatches: {},
   flowers: {

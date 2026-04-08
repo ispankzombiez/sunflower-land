@@ -10,7 +10,7 @@ interface Props {
 
 const _gameState = (state: any) => state?.context?.state;
 
-export const DailyChipsReward: React.FC<Props> = ({ onClose }) => {
+export const DailyRavenCoinReward: React.FC<Props> = ({ onClose }) => {
   const { gameService } = useContext(Context);
 
   const gameStateValue = useSelector(gameService!, _gameState);
@@ -18,44 +18,28 @@ export const DailyChipsReward: React.FC<Props> = ({ onClose }) => {
 
   const dateKey = new Date().toISOString().slice(0, 10);
 
-  // Daily chips logic
-  const lastClaimDate = gameState?.dailyChipsLastClaimDate || null;
-  const isEligibleForDailyChips =
+  // Daily RavenCoin logic
+  const lastClaimDate = gameState?.dailyRavenCoinsLastClaimDate || null;
+  const isEligibleForDailyRavenCoins =
     !lastClaimDate || lastClaimDate !== dateKey;
 
-  const currentChips = new Decimal(gameState?.inventory?.Chip ?? 0);
-  const maxChips = new Decimal(10);
-  const dailyChipsReward = maxChips.minus(currentChips);
+  const dailyRavenCoinReward = new Decimal(1000);
 
-  const onClaimDailyChips = () => {
-    gameService.send("dailyChips.claimed", {
-      reward: dailyChipsReward.toNumber(),
+  const onClaimDailyRavenCoins = () => {
+    gameService.send("dailyRavenCoins.claimed", {
+      reward: dailyRavenCoinReward.toNumber(),
     });
     onClose();
   };
 
-  if (!isEligibleForDailyChips) {
+  if (!isEligibleForDailyRavenCoins) {
     // Already claimed today
     return (
       <SpeakingModal
         onClose={onClose}
         message={[
           {
-            text: "You've already claimed your daily reward! Come back tomorrow.",
-          },
-        ]}
-      />
-    );
-  }
-
-  if (dailyChipsReward.lte(0)) {
-    // Already at max chips
-    return (
-      <SpeakingModal
-        onClose={onClose}
-        message={[
-          {
-            text: "You already have the maximum 10 chips! Spend some chips to claim more.",
+            text: "You've already claimed your daily RavenCoin reward. Come back tomorrow.",
           },
         ]}
       />
@@ -65,16 +49,14 @@ export const DailyChipsReward: React.FC<Props> = ({ onClose }) => {
   // Eligible and has reward
   return (
     <SpeakingModal
-      onClose={onClaimDailyChips}
+      onClose={onClaimDailyRavenCoins}
       message={[
         {
-          text: `Daily reward! You've been awarded ${dailyChipsReward.toNumber()} chip${
-            dailyChipsReward.equals(1) ? "" : "s"
-          }!`,
+          text: `Daily reward! You've been awarded ${dailyRavenCoinReward.toNumber()} RavenCoin!`,
           actions: [
             {
               text: "Claim",
-              cb: onClaimDailyChips,
+              cb: onClaimDailyRavenCoins,
             },
           ],
         },

@@ -283,8 +283,8 @@ import {
   ClaimMinigamePrizeAction,
 } from "./minigames/claimMinigamePrize";
 import {
-  claimDailyChips,
-  ClaimDailyChipsAction,
+  claimDailyRavenCoins,
+  ClaimDailyRavenCoinsAction,
 } from "./minigames/claimDailyChips";
 import {
   pokerBetPlaced,
@@ -723,7 +723,7 @@ export type PlayingEvent =
   | ExchangeSFLtoCoinsAction
   | DrillOilReserveAction
   | ClaimMinigamePrizeAction
-  | ClaimDailyChipsAction
+  | ClaimDailyRavenCoinsAction
   | PokerBetPlacedAction
   | PurchaseMinigameAction
   | StartMinigameAttemptAction
@@ -924,7 +924,7 @@ export const PLAYING_EVENTS: Handlers<PlayingEvent> = {
   "greenhouse.planted": plantGreenhouse,
   "minigame.itemPurchased": purchaseMinigameItem,
   "minigame.prizeClaimed": claimMinigamePrize,
-  "dailyChips.claimed": claimDailyChips,
+  "dailyRavenCoins.claimed": claimDailyRavenCoins,
   "poker.betPlaced": pokerBetPlaced,
   "minigame.attemptStarted": startMinigameAttempt,
   "minigame.scoreSubmitted": submitMinigameScore,

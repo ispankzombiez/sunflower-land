@@ -50,7 +50,7 @@ import { LoveIslandNoticeboard } from "./loveRewardShop/LoveIslandNoticeboard";
 import { Rarecrows } from "./Rarecrows";
 import { ChapterRaffles } from "./chapterRaffles/ChapterRaffles";
 import { FreeTrial } from "./FreeTrial";
-import { DailyChipsReward } from "./chests/DailyChipsReward";
+import { DailyRavenCoinReward } from "./chests/DailyChipsReward";
 import { Poker } from "./portals/Poker";
 
 type InteractableName =
@@ -982,7 +982,7 @@ export const InteractableModals: React.FC<Props> = ({ id, scene }) => {
         show={interactable === "nightshade_arcade_daily_chest"}
         onHide={closeModal}
       >
-        <DailyChipsReward onClose={closeModal} />
+        <DailyRavenCoinReward onClose={closeModal} />
       </Modal>
     </>
   );
