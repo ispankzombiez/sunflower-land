@@ -4,7 +4,7 @@ name: Portal deploy
 on:
   push:
     branches:
-      - feat/portal-deploy
+      - portal
 
 jobs:
   deploy:
