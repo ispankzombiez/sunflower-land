@@ -2055,6 +2055,7 @@
   "gameOptions.farmId": "Farm ID #{{farmId}}",
   "gameOptions.account": "Account",
   "gameOptions.advanced": "Advanced",
+  "gameOptions.advanced.refreshGame": "Refresh Game",
   "gameOptions.about": "About",
   "gameOptions.about.discord": "Join us on Discord",
   "gameOptions.about.github": "Release notes",

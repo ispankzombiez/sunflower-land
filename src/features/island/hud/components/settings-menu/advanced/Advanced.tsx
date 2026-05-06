@@ -6,6 +6,7 @@ import { Context as GameContext } from "features/game/GameProvider";
 import { MachineState } from "features/game/lib/gameMachine";
 import { ContentComponentProps } from "../GameOptions";
 import lockIcon from "assets/icons/lock.png";
+import { refreshGame } from "lib/utils/refreshGame";
 
 const _canRefresh = (state: MachineState) => !state.context.state.transaction;
 const _hideRefresh = (state: MachineState) => !state.context.nftId;
@@ -23,6 +24,11 @@ export const Advanced: React.FC<ContentComponentProps> = ({
   const refreshSession = () => {
     gameService.send("RESET");
     onClose();
+  };
+
+  const handleRefreshGame = () => {
+    onClose();
+    refreshGame();
   };
 
   return (
@@ -45,6 +51,9 @@ export const Advanced: React.FC<ContentComponentProps> = ({
           )}
         </Button>
       )}
+      <Button onClick={handleRefreshGame}>
+        <span>{t("gameOptions.advanced.refreshGame")}</span>
+      </Button>
     </div>
   );
 };
