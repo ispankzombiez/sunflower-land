@@ -3,6 +3,7 @@ import { ButtonPanel } from "components/ui/Panel";
 import { SUNNYSIDE } from "assets/sunnyside";
 import { CONFIG } from "lib/config";
 import { useAppTranslation } from "lib/i18n/useAppTranslations";
+import { refreshGame } from "lib/utils/refreshGame";
 
 const POLL_INTERVAL_MS = 5 * 60 * 1000;
 
@@ -90,12 +91,8 @@ export const VersionUpdateWidget: React.FC = () => {
     return null;
   }
 
-  const handleReload = () => {
-    window.location.reload();
-  };
-
   return (
-    <ButtonPanel className="flex space-x-2 px-2 py-1" onClick={handleReload}>
+    <ButtonPanel className="flex space-x-2 px-2 py-1" onClick={refreshGame}>
       <div>
         <div className="flex items-center text-xs space-x-2">
           <span>{t("version.updateReady")}</span>
