@@ -2,6 +2,9 @@ name: Pages preview
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - copilot/add-refresh-game-button
 
 permissions:
   contents: read
